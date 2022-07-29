@@ -20,7 +20,9 @@ export const img = css`
 
 export const btn = css`
     background-color: transparent;
-    border-width: 1px;
-    padding: 5px 20px;
+    padding: 7px 23px;
     font-size: 12px;
+    color: white;
+    border: solid white;
+    border-width: 1px;
 `
