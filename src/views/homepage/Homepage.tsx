@@ -8,7 +8,7 @@ export const Homepage: React.FC = () => {
     return (
         <div>
             <h1>View saved configurations</h1>
-            {configurations != [] ?
+            {configurations !== [] ?
                 configurations.map((config) => (
                     <ConfigurationCard year={config.year} name={config.name} color={config.color} date={config.date} />
                 )) :
