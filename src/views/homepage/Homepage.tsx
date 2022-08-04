@@ -1,5 +1,6 @@
 import { ConfigurationCard } from "../../modules"
 import { configurations } from "../../data/Configurations"
+import { Outlet } from "react-router-dom"
 
 
 //TODO fix the message when there are no configurations (for some reason, it's still trying to read 
@@ -15,6 +16,7 @@ export const Homepage: React.FC = () => {
 
                 <p>You haven’t configured any cars yet. You may choose to configure some now.</p>
             }
+            <Outlet />
         </div>
     )
 }
