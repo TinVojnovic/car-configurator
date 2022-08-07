@@ -2,10 +2,11 @@
 import { header, img, btn, links } from "./Navbar.styles"
 import P from "../../../assets/P.png"
 import { Outlet } from "react-router-dom"
+import React from "react"
 
 export const Navbar: React.FC = () => {
     return (
-        <div>
+        <React.Fragment>
             <div css={header}>
                 <img css={img} src={P} />
 
@@ -15,7 +16,7 @@ export const Navbar: React.FC = () => {
                 </div>
             </div>
             <Outlet />
-        </div>
+        </React.Fragment>
     )
 }
 

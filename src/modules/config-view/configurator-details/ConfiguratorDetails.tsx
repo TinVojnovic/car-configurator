@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react'
-import { wrapper, title, details, prices } from "./ConfigurationDetails.styles"
+import { wrapper, title, details, prices } from "./ConfiguratorDetails.styles"
 import { DetailCard } from '../../../shared'
 
 export const ConfigurationDetails: React.FC = () => {

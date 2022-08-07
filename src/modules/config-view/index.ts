@@ -1,1 +1,1 @@
-export * from "./configuration-view"
+export * from "./configurator-view"
