@@ -1,16 +1,21 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react'
-import color from "../../../assets/color_placeholder.png"
-import { wrapper, detail } from "./DetailCard.styles"
+import { wrapper, detail, title } from "./DetailCard.styles"
 
-export const DetailCard: React.FC = () => {
+interface props {
+    image: string,
+    text: string,
+    price: number
+}
+
+export const DetailCard: React.FC<props> = ({image, text, price}) => {
     return (
         <div css={wrapper}>
             <div css={detail}>
-                <img src={color} /> <p>Ultra blue metallic</p>
+                <img src={image} /> <p css={title}>{text}</p>
             </div>
 
-            <p>2,500 €</p>
+            <p>{price} €</p>
         </div>
     )
 }

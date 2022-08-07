@@ -2,6 +2,8 @@
 import React from 'react'
 import { wrapper, title, details, prices } from "./ConfiguratorDetails.styles"
 import { DetailCard } from '../../../shared'
+import blue from "../../../assets/color_blue.png"
+import wheels from "../../../assets/wheels.png"
 
 export const ConfigurationDetails: React.FC = () => {
     return (
@@ -26,12 +28,12 @@ export const ConfigurationDetails: React.FC = () => {
                 </div>
                 <div css={prices}>
                     <h3>Exterior</h3>
-                    <DetailCard />
-                    <DetailCard />
+                    <DetailCard image={blue} text="Ultra blue metallic" price={2500}/>
+                    <DetailCard image={wheels} text="22” Magnesium 5-spoke" price={0}/>
                     <br />
 
                     <h3>Interior</h3>
-                    <DetailCard />
+                    <DetailCard image={blue} text="asdasd" price={2500}/>
 
                     <div css={title}>
                         <h2>Total</h2>
@@ -42,3 +44,5 @@ export const ConfigurationDetails: React.FC = () => {
         </div>
     )
 }
+
+//TODO make a different type of DetailCard for the final Configurator View
