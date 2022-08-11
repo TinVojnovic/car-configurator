@@ -13,9 +13,6 @@ export const Exterior: React.FC = () => {
             <OptionSelect onClick={() => {console.log("MJAU");setShowOptions(false)}}/> : 
             <ConfigSelect onClick={() => {console.log("MJAU");setShowOptions(true)}}/>
             }
-
-            <button onClick={() => {setShowOptions(false)}}>Test</button>
-            <button onClick={() => {setShowOptions(true)}}>Test2</button>
         </div>
     )
 }

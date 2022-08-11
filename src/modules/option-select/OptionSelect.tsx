@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { DetailCard } from '../../shared'
-import { wrapper, options } from './OptionSelect.styles'
+import { wrapper, options, button } from './OptionSelect.styles'
 import blue from "../../assets/color_blue.png"
 import black from "../../assets/color_white.png"
 import white from "../../assets/color_black.png"
@@ -18,7 +18,7 @@ export const OptionSelect: React.FC<props> = ({onClick}) => {
                 <DetailCard image={white} text='Ultra blue metallic' price={2500}/>
             </div>
 
-                <button onClick={onClick}>Done</button>
+                <button css={button} onClick={onClick}>Done</button>
         </div>
     )
 }

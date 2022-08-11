@@ -25,4 +25,10 @@ export const btn = css`
     color: white;
     border: solid white;
     border-width: 1px;
+    cursor: pointer;
+
+    &:hover{
+        color: #2E2E38;
+        background-color: white;
+    }
 `
