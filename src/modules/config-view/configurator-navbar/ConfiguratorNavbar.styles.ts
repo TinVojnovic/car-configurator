@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 export const header = css`
     background-color: white;
     padding: 10px 50px;
+    height: 10%;
     display: flex;
     justify-content: space-between;
     align-items: center;

@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 
 export const header = css`
     background-color: #2E2E38;
+    height: 10%;
     padding: 30px;
     display: flex;
     justify-content: space-between;
