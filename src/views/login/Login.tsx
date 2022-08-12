@@ -1,13 +1,14 @@
+/** @jsxImportSource @emotion/react */
 import React, { useEffect, useState } from "react";
 import { auth } from "../../firebase";
 import {
-    getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     onAuthStateChanged,
     signOut,
 } from "firebase/auth";
 import { Navigate, Outlet } from "react-router-dom";
+import { wrapper, buttons, input } from "./Login.styles";
 
 export const Login: React.FC = () => {
     const [email, setEmail] = useState<string>("");
@@ -15,11 +16,7 @@ export const Login: React.FC = () => {
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
-            if (user) {
-                const uid = user.uid;
-                console.log(auth.currentUser?.email)
-            } else {
-            }
+            
         });
     }, []);
 
@@ -42,7 +39,7 @@ export const Login: React.FC = () => {
             console.log(errorMessage);
           });*/
 
-        const auth = getAuth();
+        console.log(auth)
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
@@ -67,19 +64,22 @@ export const Login: React.FC = () => {
     }
 
     return (
-        <React.Fragment >
-            <form onSubmit={handleForm}>
-                <input onChange={(e) => setEmail(e.currentTarget.value)} type="email" />
-                <br />
-                <input
-                    onChange={(e) => setPassword(e.currentTarget.value)}
-                    type="password"
-                />
-                <br />
-                <button>Submit</button>
-            </form>
+        <React.Fragment>
+            <div>
+                <form css={wrapper} onSubmit={handleForm}>
+                    <input css={input} onChange={(e) => setEmail(e.currentTarget.value)} type="email" />
+                    <input css={input}
+                        onChange={(e) => setPassword(e.currentTarget.value)}
+                        type="password"
+                    />
+                </form>
 
-            <button onClick={logout}>Logout</button>
+                <div css={buttons}>
+                    <button onClick={handleForm}>Submit</button>
+                    <button onClick={logout}>Logout</button>
+                </div>
+            </div>
+
             <Outlet />
         </React.Fragment>
     )
