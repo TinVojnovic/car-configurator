@@ -4,13 +4,7 @@ import { wrapper, title, details, prices } from "./ConfigurationDetails.styles"
 import { DetailCard } from '../../../shared'
 import { db } from "../../../firebase";
 import { addDoc, collection, query, onSnapshot } from "firebase/firestore";
-
-interface Configuration {
-    car: string;
-    color: string;
-    wheels: string;
-    interior: string;
-}
+import { Configuration } from "../../../types/configuration"
 
 export const ConfigurationDetails: React.FC = () => {
     const [configurations, setConfigurations] = useState<Configuration[]>([]);
