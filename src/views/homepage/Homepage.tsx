@@ -5,16 +5,18 @@ import { useEffect, useState } from "react";
 import { collection, query, onSnapshot, where } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { configuratorAtoms } from "../../states/atoms";
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { card } from "../../modules/configuration-card/ConfigurationCard.styles";
 
 export const Homepage: React.FC = () => {
     const [configurations, setConfigurations] = useState<Configuration[]>([]);
     const navigate = useNavigate();
     const setValue = useSetRecoilState(configuratorAtoms.currentConfiguration);
+    const getValue = useRecoilValue(configuratorAtoms.currentConfiguration);
 
     useEffect(() => {
         setListener();
+        console.log(getValue)
     }, [])
 
     function setListener() {
@@ -44,7 +46,7 @@ export const Homepage: React.FC = () => {
     }
 
     function renderConfigs() {
-        if (configurations.length == 0) {
+        if (configurations.length === 0) {
             return <p>You haven’t configured any cars yet. You may choose to configure some now.</p>
         }
 
