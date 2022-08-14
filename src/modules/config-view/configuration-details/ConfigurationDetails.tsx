@@ -3,40 +3,32 @@ import React, { useEffect, useState } from 'react'
 import { wrapper, title, details, prices } from "./ConfigurationDetails.styles"
 import { DetailCard } from '../../../shared'
 import { db } from "../../../firebase";
-import { addDoc, collection, query, onSnapshot } from "firebase/firestore";
+import { collection, query, onSnapshot } from "firebase/firestore";
 import { Configuration } from "../../../types/configuration"
+import { configuratorAtoms } from "../../../states/atoms";
+import { useRecoilValue } from "recoil";
 
 export const ConfigurationDetails: React.FC = () => {
-    const [configurations, setConfigurations] = useState<Configuration[]>([]);
+    const [configuration, setConfiguration] = useState<Configuration>();
+    const getValue = useRecoilValue(configuratorAtoms.currentConfiguration);
 
     useEffect(() => {
-        setListener();
-
-        console.log(configurations);
+        setConfiguration(getValue)
+        //TODO figure out why is the atom resetting on refresh, otherwise works fine
+        console.log(getValue);
+        console.log("kme")
 
     }, [])
 
-    function setListener() {
-        const q = query(collection(db, "configurations"));
-
-        const unsubscribe = onSnapshot(q, (querySnapshot) => {
-            const items = querySnapshot.docs.map((item) => item.data()) as Configuration[];
-
-            setConfigurations(items);
-        });
-
-        return () => unsubscribe();
-    }
-
     function renderConfig() {
-        if (configurations.length == 0) {
+        if (!configuration) {
             return <h1>Loading...</h1>
         }
         return (
             <div css={wrapper}>
                 <div css={title}>
                     <div>
-                        <h1>{configurations[0]?.car}</h1>
+                        <h1>{configuration.car}</h1>
                         <h4>2022</h4>
                     </div>
 

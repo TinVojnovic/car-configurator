@@ -7,7 +7,7 @@ import {
     onAuthStateChanged,
     signOut,
 } from "firebase/auth";
-import { Navigate, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { wrapper, buttons, input } from "./Login.styles";
 import { userAtoms } from "../../states/atoms";
 import { useRecoilValue, useSetRecoilState } from "recoil";

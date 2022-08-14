@@ -2,12 +2,16 @@ import { ConfigurationCard } from "../../modules"
 import { db } from "../../firebase";
 import { Configuration } from "../../types/configuration"
 import { useEffect, useState } from "react";
-import { collection, query, onSnapshot } from "firebase/firestore";
+import { collection, query, onSnapshot, where } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { configuratorAtoms } from "../../states/atoms";
+import { useSetRecoilState } from "recoil";
+import { card } from "../../modules/configuration-card/ConfigurationCard.styles";
 
 export const Homepage: React.FC = () => {
     const [configurations, setConfigurations] = useState<Configuration[]>([]);
     const navigate = useNavigate();
+    const setValue = useSetRecoilState(configuratorAtoms.currentConfiguration);
 
     useEffect(() => {
         setListener();
@@ -31,7 +35,11 @@ export const Homepage: React.FC = () => {
     }
 
     function edit(id: string) {
-        console.log(id)
+        const config = configurations.find(el => el.id === id)
+        if(config){
+            setValue(config)
+        }
+
         navigate("/config-view/" + id);
     }
 
