@@ -12,7 +12,7 @@ function App() {
         <Route path="/" element={<Navbar />}>
           <Route path="/login" element={<Login />} />
           <Route element={<PrivateRoutes />}>
-            <Route path="/homepage" element={<Homepage />} />
+            <Route path="/home" element={<Homepage />} />
             <Route path="/car-select" element={<CarSelect />} />
             <Route path="/config-view" element={<ConfigView />} />
             <Route path="/configurator" element={<Configurator />} />

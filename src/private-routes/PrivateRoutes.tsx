@@ -3,7 +3,7 @@ import { getAuth } from 'firebase/auth'
 
 const PrivateRoutes = () => {
     console.log(getAuth())
-    console.log(getAuth().currentUser)
+    console.log(getAuth().currentUser?.uid)
 return (
     true ? <Outlet/> : <Navigate to='/login'/>
   )
