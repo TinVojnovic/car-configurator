@@ -14,7 +14,7 @@ function App() {
           <Route element={<PrivateRoutes />}>
             <Route path="/home" element={<Homepage />} />
             <Route path="/car-select" element={<CarSelect />} />
-            <Route path="/config-view" element={<ConfigView />} />
+            <Route path="/config-view/:id" element={<ConfigView />} />
             <Route path="/configurator" element={<Configurator />} />
           </Route>
         </Route>

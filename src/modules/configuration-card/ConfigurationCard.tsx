@@ -6,25 +6,31 @@ import "../../index.css"
 
 interface ConfigurationCardProps {
     year: string;
-    name: string;
+    car: string;
     color: string;
     date: string; //TODO make it a functional date
+    edit: any;
 }
 
-export const ConfigurationCard: React.FC<ConfigurationCardProps> = ({year, name, color, date}) => {
+export const ConfigurationCard: React.FC<ConfigurationCardProps> = ({ year, car, color, date, edit }) => {
     return (
         <div css={card}>
-            <img css={ img } src={ carImg }/>
+            <img css={img} src={carImg} />
 
             <div css={info}>
                 <h3>{year}</h3>
-                <h1>{name}</h1>
+                <h1>{car}</h1>
                 <h2>{color}</h2>
                 <br />
                 <p>{date}</p>
             </div>
 
-            <img css={icon} src={ union } />
+            <div>
+                <button onClick={edit}>Edit</button>
+                <button>Delete</button>
+            </div>
+
+            <img css={icon} src={union} />
         </div>
     )
 }

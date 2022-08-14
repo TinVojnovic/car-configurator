@@ -4,6 +4,7 @@ import { Configuration } from "../types/configuration";
 const currentConfiguration = atom<Configuration>({
     key: "configurator.currentConfig",
     default: {
+        id: "",
         car: "",
         color: "",
         wheels: "",
