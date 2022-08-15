@@ -12,8 +12,8 @@ export const ConfigSelect: React.FC<props> = ({ onClick }) => {
     return (
         <div css={wrapper}>
             <div css={options}>
-                <DetailCard image={color} text='Color' price={2500} type="config" onClick={() => console.log("mjau")}/>
-                <DetailCard image={wheel} text='Wheels' price={2500} type="config" onClick={() => console.log("mjau")} />
+                <DetailCard image={color} text='Color' price={2500} type="config" option="colors" onClick={() => console.log("mjau")}/>
+                <DetailCard image={wheel} text='Wheels' price={2500} type="config" option="wheels" onClick={() => console.log("mjau")} />
             </div>
 
             <button css={button} onClick={onClick}>Interior {'>'}</button>

@@ -19,8 +19,13 @@ function App() {
             <Route path="/config-view/:id" element={<ConfigView />} />
             <Route path="/configurator" element={<Configurator />}>
               <Route path="/configurator/exterior" element={<Exterior />}>
-                <Route path="/configurator/exterior/configSelect" element={<ConfigSelect onClick={() => navigate("/configurator/exterior/optionSelect")} />} />
-                <Route path="/configurator/exterior/optionSelect" element={<OptionSelect onClick={() => navigate("/configurator/exterior/configSelect")} />} />
+
+                <Route path="/configurator/exterior/configSelect"
+                  element={<ConfigSelect onClick={() => navigate("/configurator/interior")} />} />
+
+                <Route path="/configurator/exterior/optionSelect/:option"
+                  element={<OptionSelect onClick={() => navigate("/configurator/exterior/configSelect")} />} />
+
               </Route>
               <Route path="/configurator/interior" element={<Interior />} />
             </Route>
