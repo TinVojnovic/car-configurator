@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 
 export const header = css`
     background-color: #2E2E38;
+    height: 10%;
     padding: 30px;
     display: flex;
     justify-content: space-between;
@@ -25,4 +26,10 @@ export const btn = css`
     color: white;
     border: solid white;
     border-width: 1px;
+    cursor: pointer;
+
+    &:hover{
+        color: #2E2E38;
+        background-color: white;
+    }
 `

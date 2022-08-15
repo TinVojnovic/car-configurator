@@ -1,2 +1,2 @@
 export * from './navbar'
-export * from './config-card'
+export * from './detail-card'

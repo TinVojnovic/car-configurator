@@ -1,12 +1,14 @@
 /** @jsxImportSource @emotion/react */
 import React, { useEffect, useState } from 'react'
-import { wrapper, title, details, prices } from "./ConfigurationDetails.styles"
+import { wrapper, title, details, prices } from "./ConfiguratorDetails.styles"
 import { DetailCard } from '../../../shared'
 import { db } from "../../../firebase";
 import { collection, query, onSnapshot } from "firebase/firestore";
 import { Configuration } from "../../../types/configuration"
 import { configuratorAtoms } from "../../../states/atoms";
 import { useRecoilValue } from "recoil";
+import blue from "../../../assets/color_blue.png"
+import wheels from "../../../assets/wheels.png"
 
 export const ConfigurationDetails: React.FC = () => {
     const [configuration, setConfiguration] = useState<Configuration>();
@@ -37,21 +39,16 @@ export const ConfigurationDetails: React.FC = () => {
                         <p>120,000 €</p>
                     </div>
                 </div>
-
-                <br />
-
                 <div css={details}>
-                    <div>
-                        <h3>Your configuration details</h3>
-                    </div>
+                    <h1>Your configuraiton details</h1>
                     <div css={prices}>
                         <h3>Exterior</h3>
-                        <DetailCard />
-                        <DetailCard />
+                        <DetailCard image={blue} text="Ultra blue metallic" price={2500} />
+                        <DetailCard image={wheels} text="22” Magnesium 5-spoke" price={0} />
                         <br />
 
                         <h3>Interior</h3>
-                        <DetailCard />
+                        <DetailCard image={blue} text="asdasd" price={2500} />
 
                         <div css={title}>
                             <h2>Total</h2>
@@ -67,3 +64,5 @@ export const ConfigurationDetails: React.FC = () => {
         renderConfig()
     )
 }
+
+//TODO make a different type of DetailCard for the final Configurator View

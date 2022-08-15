@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { configuratorAtoms } from "../../states/atoms";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { card } from "../../modules/configuration-card/ConfigurationCard.styles";
+import { Outlet } from "react-router-dom"
 
 export const Homepage: React.FC = () => {
     const [configurations, setConfigurations] = useState<Configuration[]>([]);

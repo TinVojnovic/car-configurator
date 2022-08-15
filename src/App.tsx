@@ -1,9 +1,8 @@
 import React from 'react';
 import { Navbar } from './shared'
-import { Homepage, CarSelect, Configurator, ConfigView, Login } from './views'
+import { Homepage, CarSelect, Configurator, ConfigView, Login, Exterior, Interior } from './views'
 import { Routes, Route } from 'react-router-dom';
 import PrivateRoutes from './private-routes/PrivateRoutes';
-
 
 function App() {
   return (
@@ -15,7 +14,10 @@ function App() {
             <Route path="/home" element={<Homepage />} />
             <Route path="/car-select" element={<CarSelect />} />
             <Route path="/config-view/:id" element={<ConfigView />} />
-            <Route path="/configurator" element={<Configurator />} />
+            <Route path="/configurator" element={<Configurator />}>
+              <Route path="/configurator/exterior" element={<Exterior />} />
+              <Route path="/configurator/interior" element={<Interior />} />
+            </Route>
           </Route>
         </Route>
       </Routes>

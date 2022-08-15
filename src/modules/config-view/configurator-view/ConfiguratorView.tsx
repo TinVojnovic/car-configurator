@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react'
 import car from "../../../assets/blue_car_placeholder.png"
-import { img, wrapper, preview } from "./ConfigurationView.styles"
-import { ConfigurationDetails } from '../configuration-details'
+import { img, wrapper, preview } from "./ConfiguratorView.styles"
+import { ConfigurationDetails } from '../configurator-details'
 
 export const ConfigurationView: React.FC = () => {
     return (
