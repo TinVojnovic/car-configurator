@@ -4,6 +4,7 @@ export const wrapper = css`
     background-color: grey;
     position: relative;
     height: 100%;
+    z-index: 100;
     right: 0px;
     width: 600px;
     display: flex;

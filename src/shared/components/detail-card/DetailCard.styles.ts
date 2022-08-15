@@ -5,6 +5,7 @@ export const wrapper = css`
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    cursor: pointer;
 `
 
 export const title = css`

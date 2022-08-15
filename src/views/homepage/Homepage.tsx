@@ -6,9 +6,7 @@ import { collection, query, onSnapshot, where } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { configuratorAtoms } from "../../states/atoms";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { card } from "../../modules/configuration-card/ConfigurationCard.styles";
-import { Outlet } from "react-router-dom"
-
+//TODO maybe make it so the data is fetched from the server, and not from the atom
 export const Homepage: React.FC = () => {
     const [configurations, setConfigurations] = useState<Configuration[]>([]);
     const navigate = useNavigate();
