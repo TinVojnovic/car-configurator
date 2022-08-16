@@ -14,17 +14,30 @@ export const wrapper = css`
     }
 `
 
-export const title = css`
+export const name = css`
     position: relative;
-    margin-left: 10px;
+    color: #73738C;
 `
 
 export const detail = css`
-    width: 200px;
+    width: 50%px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     img{
         float: left;
+        height: 10vh;
+    }
+`
+
+export const info = css`
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    justify-content: flex-start;
+
+    p{
+        margin: 5px 10px;
     }
 `

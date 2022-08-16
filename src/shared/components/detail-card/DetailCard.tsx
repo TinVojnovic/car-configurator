@@ -1,7 +1,9 @@
 /** @jsxImportSource @emotion/react */
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { wrapper, detail, title } from "./DetailCard.styles"
+import { wrapper, detail, name, info} from "./DetailCard.styles"
+import { getDownloadURL, ref } from 'firebase/storage'
+import { storage } from '../../../firebase'
 
 interface props {
     image: string,
@@ -15,13 +17,29 @@ interface props {
 
 export const DetailCard: React.FC<props> = ({ image, text, price, type, option, onClick, route }) => {
     const navigate = useNavigate();
+    const colorRef = ref(storage, 'RS5/options/' + option + '/' + text + '.png')
+    const [img, setImg] = useState("")
+
+    getDownloadURL(colorRef)
+        .then((url) => {
+            const img = document.getElementById('myimg');
+            setImg(url);
+            img?.setAttribute('src', url);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 
     function renderCard() {
         if (type === "config") {
             return (
                 <div css={wrapper} onClick={() => navigate("/configurator/" + route + "/optionSelect/" + option)}>
                     <div css={detail}>
-                        <img src={image} /> <p css={title}>{text}</p>
+                        <img src={img} />
+                        <div css={info}>
+                            <p>Select {option}:</p>
+                            <p css={name}>{text}</p>
+                        </div>
                     </div>
                 </div>
             )
@@ -29,10 +47,12 @@ export const DetailCard: React.FC<props> = ({ image, text, price, type, option, 
             return (
                 <div css={wrapper} onClick={onClick}>
                     <div css={detail}>
-                        <img src={image} /> <p css={title}>{text}</p>
+                        <img src={img} />
+                        <div css={info}>
+                            <p>{text}</p>
+                            <p css={name}>{price}€</p>
+                        </div>
                     </div>
-
-                    <p>{price} €</p>
                 </div>
             )
         }

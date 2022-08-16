@@ -2,14 +2,13 @@
 import React, { useEffect, useState } from 'react'
 import { wrapper, title, details, prices } from "./ConfiguratorDetails.styles"
 import { DetailCard } from '../../../shared'
-import { db } from "../../../firebase";
-import { collection, query, onSnapshot } from "firebase/firestore";
 import { Configuration } from "../../../types/configuration"
 import { configuratorAtoms } from "../../../states/atoms";
 import { useRecoilValue } from "recoil";
 import blue from "../../../assets/color_blue.png"
 import wheels from "../../../assets/wheels.png"
 import { useNavigate } from 'react-router-dom';
+import { configuratorSelectors } from '../../../states/selectors';
 
 export const ConfigurationDetails: React.FC = () => {
     const [configuration, setConfiguration] = useState<Configuration>();
@@ -18,11 +17,14 @@ export const ConfigurationDetails: React.FC = () => {
     const getWheels = useRecoilValue(configuratorAtoms.wheels);
     const getInterior = useRecoilValue(configuratorAtoms.interior);
     const navigate = useNavigate();
+    const getPrice = useRecoilValue(configuratorSelectors.totalPrice)
 
     useEffect(() => {
         setConfiguration(getValue)
         console.log(getValue);
     }, [])
+
+
 
     function renderConfig() {
         if (!configuration) {
@@ -38,7 +40,7 @@ export const ConfigurationDetails: React.FC = () => {
 
                     <div>
                         <p>Total</p>
-                        <p>120,000 €</p>
+                        <p>{getPrice}€</p>
                     </div>
                 </div>
                 <div css={details}>
@@ -46,19 +48,19 @@ export const ConfigurationDetails: React.FC = () => {
                     <div css={prices}>
                         <h3>Exterior</h3>
                         <DetailCard image={blue} text={getColor} price={2500} type="detail" 
-                        option='' route='' onClick={() => navigate("/configurator/exterior/optionSelect/colors")}/>
+                        option='colors' route='' onClick={() => navigate("/configurator/exterior/optionSelect/colors")}/>
 
                         <DetailCard image={wheels} text={getWheels} price={0} type="detail" 
-                        option='' route='' onClick={() => navigate("/configurator/exterior/optionSelect/wheels")}/>
+                        option='wheels' route='' onClick={() => navigate("/configurator/exterior/optionSelect/wheels")}/>
                         <br />
 
                         <h3>Interior</h3>
                         <DetailCard image={blue} text={getInterior} price={2500} type="detail" 
-                        option='' route='' onClick={() => navigate("/configurator/interior/optionSelect/interiors")}/>
+                        option='interiors' route='' onClick={() => navigate("/configurator/interior/optionSelect/interiors")}/>
 
                         <div css={title}>
                             <h2>Total</h2>
-                            <h2>120,000 €</h2>
+                            <h2>{getPrice} €</h2>
                         </div>
                     </div>
                 </div>

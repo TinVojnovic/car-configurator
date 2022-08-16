@@ -14,7 +14,12 @@ const currentConfiguration = atom<Configuration>({
 
 const car = atom<string>({
     key: "configurator.car",
-    default: "",
+    default: "RS5",
+});
+
+const carPrice = atom<number>({
+    key: "configurator.car.price",
+    default: 0,
 });
 
 const color = atom<string>({
@@ -22,14 +27,29 @@ const color = atom<string>({
     default: "",
 });
 
+const colorPrice = atom<number>({
+    key: "configurator.color.price",
+    default: 0,
+});
+
 const wheels = atom<string>({
     key: "configurator.wheels",
     default: "",
 });
 
+const wheelsPrice = atom<number>({
+    key: "configurator.wheels.price",
+    default: 0,
+});
+
 const interior = atom<string>({
     key: "configurator.interior",
     default: "",
+});
+
+const interiorPrice = atom<number>({
+    key: "configurator.interior.price",
+    default: 0,
 });
 
 const currentUserUid = atom<string>({
@@ -38,4 +58,4 @@ const currentUserUid = atom<string>({
 });
 
 export const userAtoms = { currentUserUid }
-export const configuratorAtoms = { currentConfiguration, car, color, wheels, interior };
+export const configuratorAtoms = { currentConfiguration, car, color, wheels, interior , carPrice, colorPrice, wheelsPrice, interiorPrice};

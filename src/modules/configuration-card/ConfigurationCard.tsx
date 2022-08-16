@@ -34,5 +34,3 @@ export const ConfigurationCard: React.FC<ConfigurationCardProps> = ({ year, car,
         </div>
     )
 }
-
-//TODO add css for text, make it responsive, image needs to change depending on the car type, make box-sizing work
