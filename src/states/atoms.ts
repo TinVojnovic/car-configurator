@@ -1,5 +1,4 @@
 import { atom } from "recoil";
-import { Configuration } from "../types/configuration";
 
 const configurationId = atom<string>({
     key: "configurator.currentConfigId",
@@ -8,7 +7,7 @@ const configurationId = atom<string>({
 
 const car = atom<string>({
     key: "configurator.car",
-    default: "RS5",
+    default: "",
 });
 
 const carPrice = atom<number>({

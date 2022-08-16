@@ -8,15 +8,15 @@ import { db } from "../../firebase"
 import { useSetRecoilState } from 'recoil';
 import { configuratorAtoms } from '../../states/atoms';
 
-interface Option {
-    id: string,
+interface Car {
     name: string,
     price: number
 }
 
 export const CarSelect: React.FC = () => {
-    const [cars, setCars] = useState<string[]>([])
+    const [cars, setCars] = useState<Car[]>([])
     const setCar = useSetRecoilState(configuratorAtoms.car)
+    const setCarPrice = useSetRecoilState(configuratorAtoms.carPrice)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -29,8 +29,8 @@ export const CarSelect: React.FC = () => {
 
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             const items = querySnapshot.docs.map((item) => {
-                return item.data().name;
-            }) as string[];
+                return item.data() as Car;
+            });
 
             setCars(items)
         });
@@ -38,8 +38,10 @@ export const CarSelect: React.FC = () => {
         return () => unsubscribe();
     }
 
-    function select(car:string) {
-        setCar(car);
+    function select(car:Car) {
+        setCar(car.name);
+        setCarPrice(car.price);
+        
         navigate("/configurator/exterior/configSelect")
     }
 
@@ -50,7 +52,7 @@ export const CarSelect: React.FC = () => {
             <div css={cards}>
                 {cars !== [] ?
                     cars.map((car) => (
-                        <CarCard year="2022" name={car} select={() => select(car)} />
+                        <CarCard year="2022" name={car.name} select={() => select(car)} />
                     )) :
 
                     <p>No cars available.</p>
