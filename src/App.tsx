@@ -1,9 +1,9 @@
 import React from 'react';
 import { Navbar } from './shared'
-import { Homepage, CarSelect, Configurator, ConfigView, Login, Exterior, Interior } from './views'
+import { Homepage, CarSelect, Configurator, ConfigView, Login, Exterior, Interior, Summary } from './views'
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import PrivateRoutes from './private-routes/PrivateRoutes';
-import { OptionSelect, ConfigSelect } from './modules';
+import { OptionSelect, ExteriorSelect, InteriorSelect } from './modules';
 
 function App() {
   const navigate = useNavigate();
@@ -21,13 +21,22 @@ function App() {
               <Route path="/configurator/exterior" element={<Exterior />}>
 
                 <Route path="/configurator/exterior/configSelect"
-                  element={<ConfigSelect onClick={() => navigate("/configurator/interior")} />} />
+                  element={<ExteriorSelect onClick={() => navigate("/configurator/interior/configSelect")} />} />
 
                 <Route path="/configurator/exterior/optionSelect/:option"
                   element={<OptionSelect onClick={() => navigate("/configurator/exterior/configSelect")} />} />
 
               </Route>
-              <Route path="/configurator/interior" element={<Interior />} />
+              <Route path="/configurator/interior" element={<Interior />}>
+
+                <Route path="/configurator/interior/configSelect"
+                  element={<InteriorSelect onClick={() => navigate("/configurator/summary")} />} />
+
+                <Route path="/configurator/interior/optionSelect/:option"
+                  element={<OptionSelect onClick={() => navigate("/configurator/interior/configSelect")} />} />
+              </Route>
+
+              <Route path="/configurator/summary" element={<Configurator />} />
             </Route>
           </Route>
         </Route>

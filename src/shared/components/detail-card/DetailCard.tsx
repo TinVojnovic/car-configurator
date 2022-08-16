@@ -10,14 +10,15 @@ interface props {
     type: string,
     option: string,
     onClick: any,
+    route: string
 }
 
-export const DetailCard: React.FC<props> = ({ image, text, price, type, option, onClick }) => {
+export const DetailCard: React.FC<props> = ({ image, text, price, type, option, onClick, route }) => {
     const navigate = useNavigate();
 
     function nav() {
         if(type === "config"){
-            navigate("/configurator/exterior/optionSelect/" + option)
+            navigate("/configurator/" + route + "/optionSelect/" + option)
         }
     }
 

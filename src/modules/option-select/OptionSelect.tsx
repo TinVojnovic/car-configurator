@@ -16,8 +16,7 @@ interface props {
 
 interface Option {
     id: string,
-    color: string,
-    wheels: string,
+    name: string,
     price: number
 }
 
@@ -46,29 +45,16 @@ export const OptionSelect: React.FC<props> = ({ onClick }) => {
     }
 
     function renderOptions() {
-        if (option === "colors") {
-            return (
-                <div css={wrapper}>
-                    <div css={options}>
-                        {
-                            colors.map((color) => (
-                                <DetailCard key={color.id} image={blue} text={color.color}
-                                    price={color.price} type="option" option='' onClick={() => console.log(color.color)} />
-                            ))
-                        }
-                    </div>
-
-                    <button css={button} onClick={onClick}>Done</button>
-                </div>
-            )
+        /*if (option === "colors") {
+            
         } else if (option === "wheels") {
             return (
                 <div css={wrapper}>
                     <div css={options}>
                         {
                             colors.map((wheels) => (
-                                <DetailCard key={wheels.id} image={blue} text={wheels.wheels}
-                                    price={wheels.price} type="option" option='' onClick={() => console.log(wheels.color)} />
+                                <DetailCard key={wheels.id} image={blue} text={wheels.name}
+                                    price={wheels.price} type="option" option='' onClick={() => console.log(wheels.name)} />
                             ))
                         }
                     </div>
@@ -78,10 +64,21 @@ export const OptionSelect: React.FC<props> = ({ onClick }) => {
             )
         }else{
             return <h1>Something went wrong...</h1>
-        }
+        }*/
     }
 
     return (
-        renderOptions()
+        <div css={wrapper}>
+            <div css={options}>
+                {
+                    colors.map((color) => (
+                        <DetailCard key={color.id} image={blue} text={color.name}
+                            price={color.price} type="option" option='' route='' onClick={() => console.log(color.name)} />
+                    ))
+                }
+            </div>
+
+            <button css={button} onClick={onClick}>Done</button>
+        </div>
     )
 }
