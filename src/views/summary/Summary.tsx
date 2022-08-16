@@ -4,7 +4,7 @@ import { ImagePreview, SummaryNavbar } from '../../modules';
 export const Summary: React.FC = () => {
     return (
         <div>
-            <ImagePreview type='exterior'/>
+            <ImagePreview type='exterior' maxIndex={5}/>
             <Outlet />
             <SummaryNavbar />
         </div>
