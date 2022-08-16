@@ -16,14 +16,16 @@ interface props {
 export const DetailCard: React.FC<props> = ({ image, text, price, type, option, onClick, route }) => {
     const navigate = useNavigate();
 
-    function nav() {
-        if(type === "config"){
-            navigate("/configurator/" + route + "/optionSelect/" + option)
-        }
-    }
-
     function renderCard() {
-        if (type === "option") {
+        if (type === "config") {
+            return (
+                <div css={wrapper} onClick={() => navigate("/configurator/" + route + "/optionSelect/" + option)}>
+                    <div css={detail}>
+                        <img src={image} /> <p css={title}>{text}</p>
+                    </div>
+                </div>
+            )
+        } else {
             return (
                 <div css={wrapper} onClick={onClick}>
                     <div css={detail}>
@@ -31,14 +33,6 @@ export const DetailCard: React.FC<props> = ({ image, text, price, type, option, 
                     </div>
 
                     <p>{price} €</p>
-                </div>
-            )
-        } else {
-            return (
-                <div css={wrapper} onClick={() => nav()}>
-                    <div css={detail}>
-                        <img src={image} /> <p css={title}>{text}</p>
-                    </div>
                 </div>
             )
         }

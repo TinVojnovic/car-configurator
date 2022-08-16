@@ -13,4 +13,8 @@ export const links = css`
     width: 350px;
     display: flex;
     justify-content: space-between;
+
+    p{
+        cursor: pointer;
+    }
 `

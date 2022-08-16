@@ -9,14 +9,18 @@ import { configuratorAtoms } from "../../../states/atoms";
 import { useRecoilValue } from "recoil";
 import blue from "../../../assets/color_blue.png"
 import wheels from "../../../assets/wheels.png"
+import { useNavigate } from 'react-router-dom';
 
 export const ConfigurationDetails: React.FC = () => {
     const [configuration, setConfiguration] = useState<Configuration>();
     const getValue = useRecoilValue(configuratorAtoms.currentConfiguration);
+    const getColor = useRecoilValue(configuratorAtoms.color);
+    const getWheels = useRecoilValue(configuratorAtoms.wheels);
+    const getInterior = useRecoilValue(configuratorAtoms.interior);
+    const navigate = useNavigate();
 
     useEffect(() => {
         setConfiguration(getValue)
-        //TODO figure out why is the atom resetting on refresh, otherwise works fine
         console.log(getValue);
     }, [])
 
@@ -41,12 +45,16 @@ export const ConfigurationDetails: React.FC = () => {
                     <h1>Your configuraiton details</h1>
                     <div css={prices}>
                         <h3>Exterior</h3>
-                        <DetailCard image={blue} text="Ultra blue metallic" price={2500} type="detail" option='' route='' onClick={() => console.log("mjau")}/>
-                        <DetailCard image={wheels} text="22” Magnesium 5-spoke" price={0} type="detail" option='' route='' onClick={() => console.log("mjau")}/>
+                        <DetailCard image={blue} text={getColor} price={2500} type="detail" 
+                        option='' route='' onClick={() => navigate("/configurator/exterior/optionSelect/colors")}/>
+
+                        <DetailCard image={wheels} text={getWheels} price={0} type="detail" 
+                        option='' route='' onClick={() => navigate("/configurator/exterior/optionSelect/wheels")}/>
                         <br />
 
                         <h3>Interior</h3>
-                        <DetailCard image={blue} text="asdasd" price={2500} type="detail" option='' route='' onClick={() => console.log("mjau")}/>
+                        <DetailCard image={blue} text={getInterior} price={2500} type="detail" 
+                        option='' route='' onClick={() => navigate("/configurator/interior/optionSelect/interiors")}/>
 
                         <div css={title}>
                             <h2>Total</h2>

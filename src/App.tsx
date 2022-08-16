@@ -36,7 +36,7 @@ function App() {
                   element={<OptionSelect onClick={() => navigate("/configurator/interior/configSelect")} />} />
               </Route>
 
-              <Route path="/configurator/summary" element={<Configurator />} />
+              <Route path="/configurator/summary" element={<Summary />} />
             </Route>
           </Route>
         </Route>

@@ -5,7 +5,13 @@ export const wrapper = css`
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    padding: 5px;
+    border-radius: 5px;
     cursor: pointer;
+
+    &:hover{
+        background-color: grey;
+    }
 `
 
 export const title = css`

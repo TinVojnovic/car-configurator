@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 
 export const wrapper = css`
-    background-color: grey;
+    background-color: #FCFCFD;
     position: relative;
     height: 100%;
     z-index: 100;
