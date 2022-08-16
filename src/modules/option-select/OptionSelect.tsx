@@ -1,9 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { DetailCard } from '../../shared'
 import { wrapper, options, button } from './OptionSelect.styles'
-import blue from "../../assets/color_blue.png"
-import black from "../../assets/color_white.png"
-import white from "../../assets/color_black.png"
 import { useEffect, useState } from 'react'
 import { collection, query, onSnapshot, where } from 'firebase/firestore'
 import { db } from "../../firebase";
@@ -11,7 +8,6 @@ import { prices } from '../config-view/configurator-details/ConfiguratorDetails.
 import { useParams } from 'react-router-dom'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { configuratorAtoms } from "../../states/atoms";
-import { Configuration } from '../../types/configuration'
 
 interface props {
     onClick: () => void;
@@ -73,7 +69,7 @@ export const OptionSelect: React.FC<props> = ({ onClick }) => {
             <div css={options}>
                 {
                     items.map((item) => (
-                        <DetailCard key={item.id} image={black} text={item.name}
+                        <DetailCard key={item.id} image={""} text={item.name}
                             price={item.price} type="option" option={option as string} route='' onClick={() => setOption(item)} />
                     ))
                 }

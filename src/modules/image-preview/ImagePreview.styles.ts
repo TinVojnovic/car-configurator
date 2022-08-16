@@ -8,7 +8,8 @@ export const preview = css`
     text-align: center;
 `
 
-export const img = css`
+export const image = css`
+    height: 40vh;
     display: block;
     margin-right: auto;
     margin-left: auto;

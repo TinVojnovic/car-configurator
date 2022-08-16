@@ -7,7 +7,7 @@ export const Exterior: React.FC = () => {
 
     return (
         <div css={wrapper}>
-            <ImagePreview />
+            <ImagePreview type="exterior" />
             <Outlet />
         </div>
     )

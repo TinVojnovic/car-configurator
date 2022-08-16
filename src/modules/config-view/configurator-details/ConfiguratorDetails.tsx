@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react'
 import { wrapper, title, details, prices, price, total } from "./ConfiguratorDetails.styles"
 import { DetailCard } from '../../../shared'
-import { Configuration } from "../../../types/configuration"
 import { configuratorAtoms } from "../../../states/atoms";
 import { useRecoilValue } from "recoil";
 import blue from "../../../assets/color_blue.png"

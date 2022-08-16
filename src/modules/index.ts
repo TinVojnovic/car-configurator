@@ -1,6 +1,5 @@
 export * from "./configuration-card"
 export * from "./car-card"
-export * from "./config-view"
 export * from "./image-preview"
 export * from "./exterior-select"
 export * from "./interior-select"

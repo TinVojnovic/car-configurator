@@ -6,7 +6,7 @@ export const wrapper = css`
     height: 100%;
     z-index: 100;
     right: 0px;
-    width: 600px;
+    width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
