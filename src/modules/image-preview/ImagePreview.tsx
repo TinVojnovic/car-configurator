@@ -1,12 +1,13 @@
 /** @jsxImportSource @emotion/react */
-import React, { useEffect } from 'react'
-import car from "../../../src/assets/blue_car_placeholder.png"
-import { image, preview, wrapper } from "./ImagePreview.styles"
+import React from 'react'
+import { image, preview, wrapper, arrows } from "./ImagePreview.styles"
 import { storage } from '../../firebase';
 import { useRecoilValue } from 'recoil';
 import { configuratorAtoms } from '../../states/atoms';
 import { getDownloadURL, ref } from 'firebase/storage';
 import { useState } from 'react';
+import left from "../../assets/Icons 16px/left_arrow.png"
+import right from "../../assets/Icons 16px/right_arrow.png"
 
 interface props {
     type: string;
@@ -21,7 +22,7 @@ export const ImagePreview: React.FC<props> = ({ type, maxIndex }) => {
     const [index, setIndex] = useState(1)
     const [img, setImg] = useState("")
     const optionRef = ref(storage, whichType())
-    
+
     getDownloadURL(optionRef)
         .then((url) => {
             setImg(url);
@@ -30,24 +31,24 @@ export const ImagePreview: React.FC<props> = ({ type, maxIndex }) => {
             console.log(err);
         });
 
-    function whichType(){
-        if(type === "exterior"){
+    function whichType() {
+        if (type === "exterior") {
             return getCar + '/' + type + '/colors/' + getColor + '/' + getWheels + '/' + index + '.png'
-        }else if(type === "interior"){
+        } else if (type === "interior") {
             return getCar + '/' + type + '/colors/' + getInterior + '/' + index + '.png'
         }
     }
 
-    function next(){
-        if(index < maxIndex)
-            setIndex(index+1)
+    function next() {
+        if (index < maxIndex)
+            setIndex(index + 1)
 
         console.log(index)
     }
-    
-    function prev(){
-        if(index > 1)
-            setIndex(index-1)
+
+    function prev() {
+        if (index > 1)
+            setIndex(index - 1)
 
         console.log(index)
     }
@@ -56,9 +57,11 @@ export const ImagePreview: React.FC<props> = ({ type, maxIndex }) => {
         <div css={wrapper}>
             <div css={preview}>
                 <img css={image} src={img} />
-                <p>{'<'} {index}/{maxIndex} {'>'}</p>
-                <button onClick={() => prev()}>prev</button>
-                <button onClick={() => next()}>next</button>
+                <div css={arrows}>
+                    <img src={left} onClick={() => prev()} />
+                    <p>{index}/{maxIndex}</p>
+                    <img src={right} onClick={() => next()} />
+                </div>
             </div>
         </div>
     )
