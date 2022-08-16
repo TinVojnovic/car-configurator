@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import { wrapper, detail, name, info} from "./DetailCard.styles"
 import { getDownloadURL, ref } from 'firebase/storage'
 import { storage } from '../../../firebase'
+import { useRecoilValue } from 'recoil'
+import { configuratorAtoms } from '../../../states/atoms'
 
 interface props {
     image: string,
@@ -17,14 +19,13 @@ interface props {
 
 export const DetailCard: React.FC<props> = ({ image, text, price, type, option, onClick, route }) => {
     const navigate = useNavigate();
-    const colorRef = ref(storage, 'RS5/options/' + option + '/' + text + '.png')
+    const getCar = useRecoilValue(configuratorAtoms.car);
+    const optionRef = ref(storage, getCar + '/options/' + option + '/' + text + '.png')
     const [img, setImg] = useState("")
 
-    getDownloadURL(colorRef)
+    getDownloadURL(optionRef)
         .then((url) => {
-            const img = document.getElementById('myimg');
             setImg(url);
-            img?.setAttribute('src', url);
         })
         .catch((err) => {
             console.log(err);
