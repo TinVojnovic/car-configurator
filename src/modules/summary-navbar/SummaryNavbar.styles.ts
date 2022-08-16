@@ -16,7 +16,6 @@ export const container = css`
 `
 
 export const info = css`
-    width: 20%px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -39,6 +38,7 @@ export const button = css`
     border: none;
     padding: 25px 75px;
     height: 100%;
+    width: 70%;
     background-color: blue;
     cursor: pointer;
 
