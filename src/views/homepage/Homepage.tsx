@@ -1,21 +1,27 @@
+/** @jsxImportSource @emotion/react */
 import { ConfigurationCard } from "../../modules"
 import { db } from "../../firebase";
 import { Configuration } from "../../types/configuration"
 import { useEffect, useState } from "react";
-import { collection, query, onSnapshot, where } from "firebase/firestore";
+import { collection, query, onSnapshot, where, deleteDoc, doc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { configuratorAtoms } from "../../states/atoms";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-//TODO maybe make it so the data is fetched from the server, and not from the atom
+import { wrapper } from "./Homepage.styles";
+
 export const Homepage: React.FC = () => {
     const [configurations, setConfigurations] = useState<Configuration[]>([]);
     const navigate = useNavigate();
-    const setValue = useSetRecoilState(configuratorAtoms.currentConfiguration);
-    const getValue = useRecoilValue(configuratorAtoms.currentConfiguration);
+    const setId = useSetRecoilState(configuratorAtoms.configurationId);
+    const getId = useRecoilValue(configuratorAtoms.configurationId);
+    const setCar = useSetRecoilState(configuratorAtoms.car);
+    const setColor = useSetRecoilState(configuratorAtoms.color);
+    const setWheels = useSetRecoilState(configuratorAtoms.wheels);
+    const setInterior = useSetRecoilState(configuratorAtoms.interior);
 
     useEffect(() => {
         setListener();
-        console.log(getValue)
+        console.log(getId)
     }, [])
 
     function setListener() {
@@ -35,13 +41,21 @@ export const Homepage: React.FC = () => {
         return () => unsubscribe();
     }
 
-    function edit(id: string) {
-        const config = configurations.find(el => el.id === id)
+    function edit(item: Configuration) {
+        const config = configurations.find(el => el.id === item.id)
         if(config){
-            setValue(config)
+            setId(getId)
+            setCar(config.car)
+            setColor(config.color)
+            setWheels(config.wheels)
+            setInterior(config.interior)
         }
 
-        navigate("/config-view/" + id);
+        navigate("/config-view/" + config?.id as string);
+    }
+
+    function deleteConfig(item: Configuration){
+        deleteDoc(doc(db, "configurations", item.id));
     }
 
     function renderConfigs() {
@@ -50,12 +64,13 @@ export const Homepage: React.FC = () => {
         }
 
         return (
-            <div>
+            <div css={wrapper}>
                 <h1>View saved configurations</h1>
                 {
                     configurations.map((config) => (
                         <ConfigurationCard key={config.id} year={"2022"} car={config.car}
-                            color={config.color} date={"Created May 22nd 2022"} edit={() => edit(config.id)} />
+                            color={config.color} date={"Created May 22nd 2022"} 
+                            edit={() => edit(config)} deleteConfig={()=>deleteConfig(config)} />
                     ))
                 }
             </div>

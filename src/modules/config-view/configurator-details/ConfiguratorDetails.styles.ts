@@ -16,3 +16,15 @@ export const details = css`
 export const prices = css`
     width: 700px;
 `
+
+export const price = css`
+    font-size: 24px;
+    margin-right: 100px;
+`
+
+export const total = css`
+    font-size: 18px;
+    color: grey;
+    margin-right: 100px;
+    float: right;
+`

@@ -1,15 +1,9 @@
 import { atom } from "recoil";
 import { Configuration } from "../types/configuration";
 
-const currentConfiguration = atom<Configuration>({
+const configurationId = atom<string>({
     key: "configurator.currentConfigId",
-    default: {
-        id: "",
-        car: "",
-        color: "",
-        wheels: "",
-        interior: ""
-    },
+    default: ""
 });
 
 const car = atom<string>({
@@ -58,4 +52,4 @@ const currentUserUid = atom<string>({
 });
 
 export const userAtoms = { currentUserUid }
-export const configuratorAtoms = { currentConfiguration, car, color, wheels, interior , carPrice, colorPrice, wheelsPrice, interiorPrice};
+export const configuratorAtoms = { configurationId, car, color, wheels, interior , carPrice, colorPrice, wheelsPrice, interiorPrice};

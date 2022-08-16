@@ -1,18 +1,17 @@
 /** @jsxImportSource @emotion/react */
-import { card, img, info, icon } from "./ConfigurationCard.styles"
+import { card, img, info, btns, editBtn, delBtn } from "./ConfigurationCard.styles"
 import carImg from "../../assets/red_car_placeholder.png"
-import union from "../../assets/Union.png"
-import "../../index.css"
 
 interface ConfigurationCardProps {
     year: string;
     car: string;
     color: string;
-    date: string; //TODO make it a functional date
+    date: string;
     edit: any;
+    deleteConfig: any;
 }
 
-export const ConfigurationCard: React.FC<ConfigurationCardProps> = ({ year, car, color, date, edit }) => {
+export const ConfigurationCard: React.FC<ConfigurationCardProps> = ({ year, car, color, date, edit, deleteConfig }) => {
     return (
         <div css={card}>
             <img css={img} src={carImg} />
@@ -25,12 +24,10 @@ export const ConfigurationCard: React.FC<ConfigurationCardProps> = ({ year, car,
                 <p>{date}</p>
             </div>
 
-            <div>
-                <button onClick={edit}>Edit</button>
-                <button>Delete</button>
+            <div css={btns}>
+                <button css={editBtn} onClick={edit}>Edit</button>
+                <button css={delBtn} onClick={deleteConfig}>Delete</button>
             </div>
-
-            <img css={icon} src={union} />
         </div>
     )
 }

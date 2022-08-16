@@ -12,6 +12,10 @@ export const button = css`
     padding: 10px 25px;
     font-size: 16px;
     color: white;
+
+    &:hover{
+        cursor: pointer;
+    }
 `
 
 export const info = css`

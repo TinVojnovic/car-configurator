@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import React, { useEffect, useState } from 'react'
-import { wrapper, title, details, prices } from "./ConfiguratorDetails.styles"
+import { wrapper, title, details, prices, price, total } from "./ConfiguratorDetails.styles"
 import { DetailCard } from '../../../shared'
 import { Configuration } from "../../../types/configuration"
 import { configuratorAtoms } from "../../../states/atoms";
@@ -11,8 +11,9 @@ import { useNavigate } from 'react-router-dom';
 import { configuratorSelectors } from '../../../states/selectors';
 
 export const ConfigurationDetails: React.FC = () => {
-    const [configuration, setConfiguration] = useState<Configuration>();
-    const getValue = useRecoilValue(configuratorAtoms.currentConfiguration);
+    const [configurationId, setConfigurationId] = useState<string>();
+    const getId = useRecoilValue(configuratorAtoms.configurationId);
+    const getCar = useRecoilValue(configuratorAtoms.car);
     const getColor = useRecoilValue(configuratorAtoms.color);
     const getWheels = useRecoilValue(configuratorAtoms.wheels);
     const getInterior = useRecoilValue(configuratorAtoms.interior);
@@ -20,27 +21,25 @@ export const ConfigurationDetails: React.FC = () => {
     const getPrice = useRecoilValue(configuratorSelectors.totalPrice)
 
     useEffect(() => {
-        setConfiguration(getValue)
-        console.log(getValue);
+        setConfigurationId(getId)
+        console.log(getId)
     }, [])
 
-
-
     function renderConfig() {
-        if (!configuration) {
+        if (false) {
             return <h1>Loading...</h1>
         }
         return (
             <div css={wrapper}>
                 <div css={title}>
                     <div>
-                        <h1>{configuration.car}</h1>
+                        <h1>{getCar}</h1>
                         <h4>2022</h4>
                     </div>
 
                     <div>
-                        <p>Total</p>
-                        <p>{getPrice}€</p>
+                        <p css={total}>Total</p>
+                        <p css={price}>{getPrice}€</p>
                     </div>
                 </div>
                 <div css={details}>

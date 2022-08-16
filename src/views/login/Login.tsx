@@ -22,7 +22,7 @@ export const Login: React.FC = () => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 const uid = user.uid;
-                setValue(user.uid);
+                setValue(uid)
                 
                 console.log(auth.currentUser?.uid);
                 console.log("uid: ", getValue)
